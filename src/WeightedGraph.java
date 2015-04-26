@@ -1,3 +1,4 @@
+import java.util.Collection;
 import java.util.LinkedList;
 
 
@@ -28,7 +29,7 @@ public class WeightedGraph {
 	public Iterable<Edge> adj(int v) {// список ребер смежн с вершиной v
 		return adj[v];
 	}
-	public Iterable<Edge> edges() {// список всех ребер
+	public Collection<Edge> edges() {// список всех ребер
 		LinkedList<Edge> l=new LinkedList<Edge>();
 		for (int v = 0; v < V; v++) {
 			for (Edge edge : l) {

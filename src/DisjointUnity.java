@@ -1,8 +1,8 @@
 
-public class UF {
+public class DisjointUnity {
 	private int[] id;
 	private int count;
-	public UF(int N) {
+	public DisjointUnity(int N) {
 		id=new int[N];
 		count = N;
 		for (int i = 0; i < N; i++) {

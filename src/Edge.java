@@ -1,7 +1,7 @@
 
 public  class Edge implements Comparable<Edge> {
-	private final int v;//одна вершина
-	private final int w;//другая
+	private final int v;//РѕРґРЅР° РІРµСЂС€РёРЅР°
+	private final int w;//РґСЂСѓРіР°СЏ
 	private double weight;
 	
 	public Edge(int v, int w, double weight) {
@@ -21,7 +21,7 @@ public  class Edge implements Comparable<Edge> {
     public int other(int vertex) {
 		if(vertex==v) return w;
 		if(vertex==w) return v;
-		else throw new RuntimeException("Недопустимое ребро");
+		else throw new RuntimeException("РќРµРґРѕРїСѓСЃС‚РёРјРѕРµ СЂРµР±СЂРѕ");
 	}
 
 
