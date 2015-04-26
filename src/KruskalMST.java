@@ -9,19 +9,33 @@ public class KruskalMST {
 		mst= new LinkedList<Edge>();
 		PriorityQueue<Edge> pq= new PriorityQueue<Edge>(G.edges());//приоритетная очередь 
 		// заполняется всеми ребрами и сортируется по возрастанию
-		DisjointUnity uf= new DisjointUnity(G.V());//создаем непересек мн-ва
+		DisjointUnity vertexUnity= new DisjointUnity(G.V());//создаем непересек мн-ва
 		//по кол-ву першин графа
 		while(!pq.isEmpty()&& mst.size()<G.V()-1){//перебирает все ребра графа пр. очереди
-			// пока она не опустеет и МОД не будет содержать N-1 ребер
-			Edge e=pq.poll();//
-			int v=e.either(), w=e.other(v);
-			if(uf.connected(v, w)) continue;
-			uf.union(v, w);
-			mst.add(e);
+			// пока она не опустеет и МОД содержит меньше N-1 ребер
+			Edge e=pq.poll();// извлекает 1й(мин) элемент пр. очереди
+			int v=e.either(), w=e.other(v);// 
+			if(vertexUnity.connected(v, w)) continue;//если вершины v и w принадлежат одному 
+			//множеству, то ребро игнорируется (при их соед-и обр-ся цикл). 
+			vertexUnity.union(v, w);// Иначе множества сод-е вершины v и w объединяются
+			mst.add(e);// добавляет ребро к МОД
 		}
 	}
 	public Iterable<Edge> edges(){
 		return mst;
+	}
+	public double weight() {
+		double weight=0;
+		for (Edge edge : mst) {
+			weight+=edge.weight();
+		}
+		return weight;
+	}
+	public void print() {
+		for (Edge edge : mst) {
+			System.out.println(edge.toString());
+		}
+		System.out.println(weight());
 	}
 
 }

@@ -3,9 +3,9 @@ import java.util.LinkedList;
 
 
 public class WeightedGraph {
-    private final int V;// кол-во верш
-    private int E; // кол-во ребер
-    private LinkedList<Edge>[] adj;
+	private final int V;// кол-во верш
+	private int E; // кол-во ребер
+	private LinkedList<Edge>[] adj;
 	public WeightedGraph(int V) {
 		this.V = V;
 		E = 0;
@@ -32,12 +32,19 @@ public class WeightedGraph {
 	public Collection<Edge> edges() {// список всех ребер
 		LinkedList<Edge> l=new LinkedList<Edge>();
 		for (int v = 0; v < V; v++) {
-			for (Edge edge : l) {
+			for (Edge edge : adj[v]) {
 				if(edge.other(v)>v) l.add(edge);
 			}
 		}
 		return l;
 	}
- 
-    
+	public void print() {
+		for (Edge e: edges()) {
+			System.out.println(e.toString());
+		}
+
+
+	}
+
+
 }
