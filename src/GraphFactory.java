@@ -4,11 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-
-
-public class GrapthFactory {
-	public static WeightedGraph createGraph(String path) {
-		WeightedGraph gr=null;
+public class GraphFactory {
+	private WeightedGraph gr;
+	public WeightedGraph createGraph(String path) {
 		String len;
 		int v, w;
 		double weight;
@@ -22,10 +20,10 @@ public class GrapthFactory {
 				v=Integer.parseInt(vertexes[0]);
 				vertexes=vertexes[1].split(" ");
 				w=Integer.parseInt(vertexes[0]);
-				weight=Double.parseDouble(vertexes[1]);	
+				weight=Double.parseDouble(vertexes[1]);
 				gr.addEdge(new Edge(v, w, weight));
 			}
-				
+
 		}
 		catch(IOException e){
 			e.printStackTrace();
@@ -33,9 +31,19 @@ public class GrapthFactory {
 		return gr;
 	}
 	public static void main(String[] args) {
-		createGraph("graph.txt").print();
-		System.out.println();
-		KruskalMST kr=new KruskalMST(createGraph("graph.txt"));
-		kr.print();
+		try{
+			WeightedGraph gr=new GraphFactory().createGraph("graph.txt");
+			gr.print();
+			System.out.println();
+			KruskalMST kr=new KruskalMST(gr);
+			kr.print();
+		}
+		catch(NumberFormatException e) {
+			System.out.println("неверно задана вершина или вес: \n"+e.getMessage());
+		}
+		catch (IndexOutOfBoundsException e) {
+			System.out.println("неверно задано количество вершин: "+ e.getMessage());
+		}
+
 	}
 }
