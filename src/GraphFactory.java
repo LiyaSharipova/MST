@@ -33,10 +33,10 @@ public class GraphFactory {
 	public static void main(String[] args) {
 		try{
 			WeightedGraph gr=new GraphFactory().createGraph("graph.txt");
-			gr.print();
+			gr.toString();
 			System.out.println();
 			KruskalMST kr=new KruskalMST(gr);
-			kr.print();
+			System.out.println(kr.toString());
 		}
 		catch(NumberFormatException e) {
 			System.out.println("неверно задана вершина или вес: \n"+e.getMessage());

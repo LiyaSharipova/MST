@@ -38,11 +38,12 @@ public class WeightedGraph {
 		}
 		return l;
 	}
-	public void print() {
+	@Override
+	public String toString() {
 		for (Edge e: edges()) {
 			System.out.println(e.toString());
 		}
-
+        return null;
 
 	}
 

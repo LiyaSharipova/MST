@@ -1,8 +1,8 @@
 
-public class DisjointUnity {
+public class QuickFind {
 	private int[] id;
 	private int count;
-	public DisjointUnity(int N) {
+	public QuickFind(int N) {
 		id=new int[N];
 		count = N;
 		for (int i = 0; i < N; i++) {

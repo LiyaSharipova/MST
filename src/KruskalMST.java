@@ -7,6 +7,9 @@ import java.util.Queue;
 public class KruskalMST {
 	private List<Edge>  mst ;// все ребра МОД хранятся здесь
 	public KruskalMST(WeightedGraph G){
+	    MST(G);
+	}
+	private void MST(WeightedGraph G) {
 		mst= new LinkedList<Edge>();
 		PriorityQueue<Edge> pq= new PriorityQueue<Edge>(G.edges());
 		    //приоритетная очередь 
@@ -36,11 +39,12 @@ public class KruskalMST {
 		}
 		return weight;
 	}
-	public void print() {
+	@Override
+	public String toString() {
 		for (Edge edge : mst) {
 			System.out.println(edge.toString());
 		}
-		System.out.println(weight());
+		return Double.toString(weight());
 	}
 
 }
